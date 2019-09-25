@@ -6,7 +6,9 @@
 import logging
 import json
 
-from flask import Flask, request, jsonify
+from flask import Flask, jsonify
+
+from src.gcal_client import GcalClient
 
 
 API_VERSION = '0.0.1'
@@ -18,10 +20,12 @@ def build_default_app():
     with open(USER_LIST_PATH) as fin:
         users = json.load(fin)['users']
 
-    return build_app(users)
+    gcal_client = GcalClient()
+
+    return build_app(users, gcal_client)
 
 
-def build_app(users):
+def build_app(users, cal_client):
     app = Flask(__name__)
 
     @app.route('/health', methods=['GET'])
@@ -35,6 +39,10 @@ def build_app(users):
     @app.route(f'/api/{API_VERSION}/users', methods=['GET'])
     def get_user_list():
         return jsonify(users)
+
+    @app.route(f'/api/{API_VERSION}/user/<username>/upcoming-events', methods=['GET'])
+    def get_upcoming_events(username):
+        return cal_client.get_upcoming_events(username)
 
     return app
 
