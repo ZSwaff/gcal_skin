@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "first": "Nima",
+      "email": "nima@plenty.ag"
+    },
+    {
+      "first": "Zack",
+      "email": "zack@plenty.ag"
+    }
+  ]
+}

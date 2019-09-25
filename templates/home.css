@@ -1,0 +1,21 @@
+body {
+  font-family: "Roboto";
+}
+
+#main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 75%;
+  background-color: #FEFEFE;
+}
+
+#sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 25%;
+  background-color: #FCFCFC;
+}
