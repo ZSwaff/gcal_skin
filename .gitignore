@@ -109,3 +109,6 @@ venv.bak/
 # Google Credentials
 token*
 credentials*
+
+# Cache
+*CACHE*

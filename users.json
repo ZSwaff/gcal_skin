@@ -2,11 +2,11 @@
   "users": [
     {
       "first": "Nima",
-      "username": "nima"
+      "email": "nima@plenty.ag"
     },
     {
       "first": "Zack",
-      "username": "zack"
+      "email": "zack@plenty.ag"
     }
   ]
 }
