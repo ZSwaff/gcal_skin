@@ -2,11 +2,17 @@
   "users": [
     {
       "first": "Nima",
-      "email": "nima@plenty.ag"
+      "email": "nima@plenty.ag",
+      "aliases": []
     },
     {
       "first": "Zack",
-      "email": "zack@plenty.ag"
+      "email": "zack@plenty.ag",
+      "aliases": [
+        "zack.swafford@plenty.ag",
+        "zack@seejanefarm.com",
+        "zack.swafford@seejanefarm.com"
+      ]
     }
   ]
 }
