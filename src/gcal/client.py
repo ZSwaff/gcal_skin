@@ -19,4 +19,4 @@ class GcalClient:
             res = req.execute()
             results += res['items']
             req = self.calendar.events().list_next(req, res)
-        return from_gcal_events(results)
+        return from_gcal_events(results, email)
