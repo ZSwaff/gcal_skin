@@ -4,15 +4,16 @@ from enum import Enum
 from src.util import parse_to_utc, to_camel_case
 
 
-ONE_ON_ONE_REGEX = r'^ *([A-Za-z ]) ?([<>-~]+|:+|/+|\|+|\\+) ?([A-Za-z ]).*$'
+ONE_ON_ONE_REGEX = r'^ *([A-Za-z -]) ?([<>-~]+|:+|/+|\|+|\\+) ?([A-Za-z -]).*$'
 
 
 class Event:
     class Acceptance(Enum):
         UNKNOWN = 0
         NONE = 1
-        MAYBE = 2
-        ACCEPTED = 3
+        DECLINED = 2
+        MAYBE = 3
+        ACCEPTED = 4
 
     SERIALIZED_ATTRIBUTES = [
         'title',
@@ -98,9 +99,19 @@ class Event:
         }
 
 
+def acceptance_from_gcal_attendee_response_status(gcal_attendee_response_status):
+    return {
+        'accepted': Event.Acceptance.ACCEPTED,
+        'declined': Event.Acceptance.DECLINED,
+        'needsAction': Event.Acceptance.NONE,
+        'tentative': Event.Acceptance.MAYBE
+    }[gcal_attendee_response_status]
+
 def from_gcal_event(gcal_event, user_email):
-    user_acceptance = Event.Acceptance.UNKNOWN  # todo fix
-    attendee_emails = []  # todo fix
+    attendees = eval(gcal_event['attendees'])
+    user_attendee = [e for e in attendees if e.get('self', False)]
+    user_acceptance = acceptance_from_gcal_attendee_response_status(user_attendee['responseStatus'])
+    attendee_emails = [e['email'] for e in attendees]
     return Event(
         gcal_event['summary'],
         parse_to_utc(gcal_event['start']['dateTime']),
@@ -113,17 +124,17 @@ def from_gcal_event(gcal_event, user_email):
     )
 
 def from_gcal_events(gcal_events, user_email):
-    res = [from_gcal_event(e, user_email) for e in gcal_events]
-    res.sort(key=lambda x: x.start_dt)
-    for i, event in enumerate(res):
-        user_has_conflict = False
-        for j in range(i - 1, -1, -1):
-            pass
-            # todo check for conflict and break if so
-            # todo break if out of range
-        for j in range(i + 1, len(res)):
-            pass
-            # todo check for conflict and break if so
-            # todo break if out of range
-        event.user_has_conflict = user_has_conflict
-    return res
+    events = [from_gcal_event(e, user_email) for e in gcal_events]
+    events.sort(key=lambda x: x.end_dt)
+    for i, event in enumerate(events[1:], 1):
+        last_event = events[i - 1]
+        if event.start_dt < last_event.end_dt:
+            event.user_has_conflict = True
+            last_event.user_has_conflict = True
+    events.sort(key=lambda x: x.start_dt)
+    for i, event in enumerate(events[:-1]):
+        next_event = events[i + 1]
+        if event.end_dt > next_event.start_dt:
+            event.user_has_conflict = True
+            next_event.user_has_conflict = True
+    return events
