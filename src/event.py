@@ -1,7 +1,9 @@
 import re
 from enum import Enum
 
-from src.util import parse_to_utc, to_camel_case
+import pandas as pd
+
+from util import parse_dt_to_utc, parse_date_to_utc, print_dt_to_utc, to_camel_case
 
 
 ONE_ON_ONE_REGEX = r'^ *([A-Za-z -]) ?([<>-~]+|:+|/+|\|+|\\+) ?([A-Za-z -]).*$'
@@ -15,12 +17,13 @@ class Event:
         MAYBE = 3
         ACCEPTED = 4
 
+    # todo convert to wrapper
     SERIALIZED_ATTRIBUTES = [
         'title',
         'start_dt_str',
         'end_dt_str',
         'location',
-        'organizer',
+        'organizer_email',
         'is_one_on_one',
         'needs_location',
         'user_acceptance',
@@ -49,8 +52,16 @@ class Event:
         return self._start_dt
 
     @property
+    def start_dt_str(self):
+        return print_dt_to_utc(self._start_dt)
+
+    @property
     def end_dt(self):
         return self._end_dt
+
+    @property
+    def end_dt_str(self):
+        return print_dt_to_utc(self._end_dt)
 
     @property
     def location(self):
@@ -107,24 +118,48 @@ def acceptance_from_gcal_attendee_response_status(gcal_attendee_response_status)
         'tentative': Event.Acceptance.MAYBE
     }[gcal_attendee_response_status]
 
+def get_dt_from_gcal_event(gcal_event, dt_key):
+    dt = eval(gcal_event[dt_key])
+    if 'dateTime' in dt:
+        return parse_dt_to_utc(dt['dateTime'])
+    else:
+        return parse_date_to_utc(dt['date'])
+
 def from_gcal_event(gcal_event, user_email):
+    title = gcal_event['summary']
+    if pd.isnull(title):
+        return None
+
+    raw_attendees = gcal_event['attendees']
+    if pd.isnull(raw_attendees):
+        return None
+
     attendees = eval(gcal_event['attendees'])
-    user_attendee = [e for e in attendees if e.get('self', False)]
+    user_attendees = [e for e in attendees if e.get('self', False)]
+    if len(user_attendees) != 1:
+        return None
+
+    user_attendee = user_attendees[0]
     user_acceptance = acceptance_from_gcal_attendee_response_status(user_attendee['responseStatus'])
     attendee_emails = [e['email'] for e in attendees]
+
     return Event(
-        gcal_event['summary'],
-        parse_to_utc(gcal_event['start']['dateTime']),
-        parse_to_utc(gcal_event['start']['dateTime']),
+        title,
+        get_dt_from_gcal_event(gcal_event, 'start'),
+        get_dt_from_gcal_event(gcal_event, 'end'),
         gcal_event['location'],
-        gcal_event['organizer']['email'],
+        eval(gcal_event['organizer'])['email'],
         attendee_emails,
         user_email,
         user_acceptance
     )
 
 def from_gcal_events(gcal_events, user_email):
-    events = [from_gcal_event(e, user_email) for e in gcal_events]
+    if isinstance(gcal_events, pd.core.frame.DataFrame):
+        gcal_events = gcal_events.to_dict('records')
+    raw_events = [from_gcal_event(e, user_email) for e in gcal_events]
+    events = [e for e in raw_events if e is not None]
+
     events.sort(key=lambda x: x.end_dt)
     for i, event in enumerate(events[1:], 1):
         last_event = events[i - 1]
@@ -137,4 +172,5 @@ def from_gcal_events(gcal_events, user_email):
         if event.end_dt > next_event.start_dt:
             event.user_has_conflict = True
             next_event.user_has_conflict = True
+
     return events
