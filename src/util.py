@@ -12,7 +12,7 @@ def parse_dt_to_utc(dt_str):
     return datetime.strptime(dt_str, ISO_DT_FORMAT).astimezone(tz=timezone.utc)
 
 def print_dt_to_utc(dt):
-    return dt.isoformat() + 'Z'
+    return dt.isoformat()
 
 def to_camel_case(s):
     frags = s.split('_')

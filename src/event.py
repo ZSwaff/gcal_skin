@@ -26,7 +26,7 @@ class Event:
         'organizer_email',
         'is_one_on_one',
         'needs_location',
-        'user_acceptance',
+        'user_acceptance_str',
         'user_is_organizer',
         'user_has_conflict'
     ]
@@ -82,6 +82,10 @@ class Event:
     @property
     def user_acceptance(self):
         return self._user_acceptance
+
+    @property
+    def user_acceptance_str(self):
+        return self._user_acceptance.name
 
     @property
     def is_one_on_one(self):
