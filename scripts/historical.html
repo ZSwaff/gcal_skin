@@ -1,0 +1,85 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    
+      <meta charset="utf-8">
+      <title>Bokeh Plot</title>
+      
+      
+        
+          
+        
+        
+          
+        <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.1.min.js"></script>
+        <script type="text/javascript">
+            Bokeh.set_log_level("info");
+        </script>
+        
+      
+      
+    
+  </head>
+  
+  
+  <body>
+    
+      
+        
+          
+          
+            
+              <div class="bk-root" id="44746abd-b72c-4b9a-a692-bca36c0beee3" data-root-id="1003"></div>
+            
+          
+        
+      
+      
+        <script type="application/json" id="1307">
+          {"45818194-6380-4174-9ec7-b97a602f70b0":{"defs":[],"roots":{"references":[{"attributes":{},"id":"1036","type":"BasicTickFormatter"},{"attributes":{"axis":{"id":"1018"},"coordinates":null,"dimension":1,"group":null,"ticker":null},"id":"1021","type":"Grid"},{"attributes":{},"id":"1041","type":"UnionRenderers"},{"attributes":{},"id":"1042","type":"Selection"},{"attributes":{},"id":"1037","type":"AllLabels"},{"attributes":{},"id":"1010","type":"LinearScale"},{"attributes":{"line_alpha":0.1,"line_color":"#1f77b4","line_width":2,"x":{"field":"weekStartDt"},"y":{"field":"totalHr"}},"id":"1030","type":"Line"},{"attributes":{"callback":null,"tooltips":[["Week","@weekStart"],["Hours in Meetings","@totalHr"],["Number of Meetings","@meetingCount"]]},"id":"1002","type":"HoverTool"},{"attributes":{"line_color":"#1f77b4","line_width":2,"x":{"field":"weekStartDt"},"y":{"field":"totalHr"}},"id":"1029","type":"Line"},{"attributes":{},"id":"1012","type":"LinearScale"},{"attributes":{"axis":{"id":"1014"},"coordinates":null,"group":null,"ticker":null},"id":"1017","type":"Grid"},{"attributes":{"mantissas":[1,2,5],"max_interval":500.0,"num_minor_ticks":0},"id":"1043","type":"AdaptiveTicker"},{"attributes":{},"id":"1039","type":"DatetimeTickFormatter"},{"attributes":{"source":{"id":"1027"}},"id":"1033","type":"CDSView"},{"attributes":{"base":60,"mantissas":[1,2,5,10,15,20,30],"max_interval":1800000.0,"min_interval":1000.0,"num_minor_ticks":0},"id":"1044","type":"AdaptiveTicker"},{"attributes":{},"id":"1054","type":"YearsTicker"},{"attributes":{"base":24,"mantissas":[1,2,4,6,8,12],"max_interval":43200000.0,"min_interval":3600000.0,"num_minor_ticks":0},"id":"1045","type":"AdaptiveTicker"},{"attributes":{"months":[0,1,2,3,4,5,6,7,8,9,10,11]},"id":"1050","type":"MonthsTicker"},{"attributes":{"days":[1,15]},"id":"1049","type":"DaysTicker"},{"attributes":{"days":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]},"id":"1046","type":"DaysTicker"},{"attributes":{"days":[1,4,7,10,13,16,19,22,25,28]},"id":"1047","type":"DaysTicker"},{"attributes":{"days":[1,8,15,22]},"id":"1048","type":"DaysTicker"},{"attributes":{"months":[0,6]},"id":"1053","type":"MonthsTicker"},{"attributes":{"months":[0,2,4,6,8,10]},"id":"1051","type":"MonthsTicker"},{"attributes":{"below":[{"id":"1014"}],"center":[{"id":"1017"},{"id":"1021"}],"height":800,"left":[{"id":"1018"}],"renderers":[{"id":"1032"}],"title":{"id":"1004"},"toolbar":{"id":"1022"},"toolbar_location":null,"width":1600,"x_range":{"id":"1006"},"x_scale":{"id":"1010"},"y_range":{"id":"1008"},"y_scale":{"id":"1012"}},"id":"1003","subtype":"Figure","type":"Plot"},{"attributes":{},"id":"1008","type":"DataRange1d"},{"attributes":{},"id":"1006","type":"DataRange1d"},{"attributes":{"coordinates":null,"data_source":{"id":"1027"},"glyph":{"id":"1029"},"group":null,"hover_glyph":null,"muted_glyph":{"id":"1031"},"nonselection_glyph":{"id":"1030"},"view":{"id":"1033"}},"id":"1032","type":"GlyphRenderer"},{"attributes":{"months":[0,4,8]},"id":"1052","type":"MonthsTicker"},{"attributes":{"coordinates":null,"formatter":{"id":"1039"},"group":null,"major_label_policy":{"id":"1040"},"ticker":{"id":"1015"}},"id":"1014","type":"DatetimeAxis"},{"attributes":{},"id":"1040","type":"AllLabels"},{"attributes":{"active_drag":null,"active_scroll":null,"active_tap":null,"tools":[{"id":"1002"}]},"id":"1022","type":"Toolbar"},{"attributes":{},"id":"1019","type":"BasicTicker"},{"attributes":{"data":{"index":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156],"meetingCount":[1,1,3,3,2,2,3,1,1,4,3,2,4,2,4,2,2,3,6,5,3,1,1,2,2,1,8,5,2,2,6,5,2,1,2,4,3,2,1,6,2,2,2,3,4,2,1,3,3,1,2,1,3,2,1,2,3,6,3,4,5,1,1,1,2,2,2,2,2,5,3,2,4,7,5,9,5,5,2,3,2,3,1,4,8,2,8,6,3,2,3,4,1,5,8,8,12,8,6,4,6,1,2,1,1,1,2,1,2,1,4,5,4,1,1,2,1,1,2,1,1,1,3,3,4,3,4,3,4,3,5,4,2,9,10,9,10,9,9,10,18,10,18,8,10,7,12,9,12,15,11,11,9,7,14,21,7],"totalHr":{"__ndarray__":"AAAAAAAAUkDv7u7u7u4QQGZmZmZmVlpA3t3d3d3dLkAAAAAAAAASQAAAAAAAACVAAAAAAAAASUAAAAAAAAAMQAAAAAAAAAxAERERERExYECamZmZmUliQFVVVVVVVSJAq6qqqqqqHkAAAAAAAAAhQGZmZmZmBlpAAAAAAAAAEkCrqqqqqqoeQAAAAAAAABpAd3d3d3cfZkBmZmZmZsZTQBERERERIVVAAAAAAAAA8D8AAAAAAADwP3d3d3d3dwVAq6qqqqqqHEDNzMzMzMwWQLy7u7u7m1ZAIiIiIiKyWUAAAAAAAAAEQFVVVVVVlTBAVVVVVVU9Z0BVVVVVVVUoQAAAAAAAAABAAAAAAAAA8D/v7u7u7u4dQGZmZmZmZlRAERERERERGkAAAAAAAAAIQKuqqqqqqv4/MzMzMzMzJUAAAAAAAAD8P6uqqqqqqgRAMzMzMzMzCUDe3d3d3d0SQERERERERBtAzczMzMzMGkAAAAAAAAAWQKuqqqqqqhVA3t3d3d3dH0AAAAAAAADwPwAAAAAAAAhAAAAAAAAA8D8AAAAAAAATQAAAAAAAAAZAAAAAAAAAAEAAAAAAAAAQQAAAAAAAABBA3t3d3d3dKkCrqqqqqiohQAAAAAAAwDBAZmZmZmZmJ0AAAAAAAADwPwAAAAAAAPA/q6qqqqqqFkCrqqqqqqodQBEREREREQ1AAAAAAAAAAEAAAAAAAIBYQAAAAAAAAABAAAAAAAAAKEAAAAAAAAAgQAAAAAAAQFlAREREREQUWkDNzMzMzExbQFVVVVVVVVRAAAAAAAAAOkAAAAAAAKBZQAAAAAAAADFAAAAAAAAAIkAAAAAAAMBRQAAAAAAAgCVAAAAAAAAQU0AAAAAAAAAQQAAAAAAAwF5AAAAAAACAL0AAAAAAAGBbQAAAAAAAgDBAAAAAAAAAP0AAAAAAAAAQQAAAAAAAAABAmpmZmZmZF0AAAAAAAIBLQAAAAAAAAABAVVVVVVV1WUCamZmZmdlOQBERERERAWdAVVVVVVU1WkBVVVVVVZU+QJqZmZmZeWxAAAAAAACAQkDe3d3d3R1EQAAAAAAAAABAAAAAAAAAEEAAAAAAAAAMQAAAAAAAAABAAAAAAACASEAAAAAAAABuQAAAAAAAAChAAAAAAAAAKkAAAAAAAADwP4mIiIiICCFA7+7u7u7uH0AREREREREeQImIiIiIiBRAAAAAAAAA8D8AAAAAAAAKQAAAAAAAANA/AAAAAAAA0D8AAAAAAAD0PwAAAAAAANA/AAAAAAAA8D/NzMzMzMz8PyIiIiIiIhNAVVVVVVVVBUAAAAAAAAAUQAAAAAAAABRAAAAAAAAAGkAAAAAAAAASQAAAAAAAABJAAAAAAAAAEEAAAAAAAAAaQAAAAAAAABZAAAAAAAAACEAAAAAAAAAvQAAAAAAAACZAAAAAAAAAJUBmZmZmZuYtQAAAAAAAACRAAAAAAAAAIECJiIiIiAgpQAAAAAAAADFAq6qqqqoqQUAAAAAAAIA5QAAAAAAAgExAERERERHRMEAREREREZE/QO/u7u7urjBAAAAAAAAAIECJiIiIiAgsQFVVVVVV1U9A7+7u7u7uLUDv7u7u7i4zQN7d3d3dhWNAAAAAAAAAIEAAAAAAAMBAQAAAAAAAQFBAAAAAAAAAHEA=","dtype":"float64","order":"little","shape":[157]},"totalSec":{"__ndarray__":"AAAAAACkD0EAAAAAAMTNQAAAAADwJRdBAAAAAAAh60AAAAAAAKTPQAAAAAAAdeJAAAAAAAD5BUEAAAAAAJzIQAAAAAAAnMhAAAAAAEB2HEEAAAAAsBIgQQAAAAAAHeBAAAAAAAD02kAAAAAAAOLdQAAAAACg3xZBAAAAAACkz0AAAAAAAPTaQAAAAAAA2tZAAAAAAKhxI0EAAAAAYGERQQAAAAAQkhJBAAAAAAAgrEAAAAAAACCsQAAAAAAA3sJAAAAAAAAy2UAAAAAAAArUQAAAAADg3hNBAAAAAJCVFkEAAAAAAJTBQAAAAACAJu1AAAAAAOhsJEEAAAAAAGPlQAAAAAAAILxAAAAAAAAgrEAAAAAAAE/aQAAAAAAA7hFBAAAAAADp1kAAAAAAABjFQAAAAAAA9LpAAAAAAACi4kAAAAAAAJy4QAAAAAAAKsJAAAAAAAAmxkAAAAAAAJXQQAAAAAAA99dAAAAAAACO10AAAAAAAFbTQAAAAAAAC9NAAAAAAAAC3EAAAAAAACCsQAAAAAAAGMVAAAAAAAAgrEAAAAAAALPQQAAAAAAAVsNAAAAAAAAgvEAAAAAAACDMQAAAAAAAIMxAAAAAAACd50AAAAAAAC3eQAAAAACAce1AAAAAAACR5EAAAAAAACCsQAAAAAAAIKxAAAAAAADs00AAAAAAABPaQAAAAAAAjMlAAAAAAAAgvEAAAAAAgIgVQQAAAAAAILxAAAAAAAAY5UAAAAAAACDcQAAAAABAMRZBAAAAANDrFkEAAAAAgP4XQQAAAAAA3xFBAAAAAADa9kAAAAAAoIUWQQAAAAAA4u1AAAAAAACk30AAAAAAgDMPQQAAAACA5eJAAAAAABDBEEEAAAAAACDMQAAAAADABhtBAAAAAICv60AAAAAAYA8YQQAAAAAAAe1AAAAAAAA/+0AAAAAAACDMQAAAAAAAILxAAAAAAAC+1EAAAAAAgCsIQQAAAAAAILxAAAAAACBgFkEAAAAAQB0LQQAAAADwNyRBAAAAAOAIF0EAAAAAQOH6QAAAAADgBilBAAAAAIBCAEEAAAAAQK4BQQAAAAAAILxAAAAAAAAgzEAAAAAAAJzIQAAAAAAAILxAAAAAAICIBUEAAAAAAF4qQQAAAAAAGOVAAAAAAADa5kAAAAAAACCsQAAAAAAA8d1AAAAAAAAR3EAAAAAAAG3aQAAAAAAADNJAAAAAAAAgrEAAAAAAANrGQAAAAAAAIIxAAAAAAAAgjEAAAAAAAJSxQAAAAAAAIIxAAAAAAAAgrEAAAAAAAFC5QAAAAAAA0dBAAAAAAADAwkAAAAAAAJTRQAAAAAAAlNFAAAAAAADa1kAAAAAAAKTPQAAAAAAApM9AAAAAAAAgzEAAAAAAANrWQAAAAAAAVtNAAAAAAAAYxUAAAAAAAD/rQAAAAAAAVuNAAAAAAAB14kAAAAAAgEfqQAAAAAAAlOFAAAAAAAAg3EAAAAAAgADmQAAAAAAA4u1AAAAAAAAt/kAAAAAAgGn2QAAAAACADAlBAAAAAICP7UAAAAAAgL77QAAAAACAU+1AAAAAAAAg3EAAAAAAgKPoQAAAAACA+gtBAAAAAABP6kAAAAAAQNzwQAAAAACoKCFBAAAAAAAg3EAAAAAAgHH9QAAAAACAkAxBAAAAAACc2EA=","dtype":"float64","order":"little","shape":[157]},"weekStart":["2017-12-25","2018-01-01","2018-01-08","2018-01-15","2018-01-22","2018-02-05","2018-02-12","2018-02-19","2018-03-05","2018-03-12","2018-03-19","2018-03-26","2018-04-02","2018-04-16","2018-04-23","2018-04-30","2018-05-07","2018-05-14","2018-05-28","2018-06-11","2018-06-18","2018-07-02","2018-07-16","2018-07-23","2018-07-30","2018-08-06","2018-08-13","2018-08-27","2018-09-03","2018-09-10","2018-09-17","2018-09-24","2018-10-01","2018-10-15","2018-10-22","2018-10-29","2018-11-05","2018-11-12","2018-11-19","2018-11-26","2018-12-03","2018-12-17","2018-12-24","2018-12-31","2019-01-14","2019-01-21","2019-02-04","2019-02-11","2019-02-18","2019-02-25","2019-03-04","2019-03-11","2019-03-18","2019-03-25","2019-04-01","2019-04-08","2019-04-22","2019-04-29","2019-05-06","2019-05-13","2019-05-20","2019-06-03","2019-06-17","2019-06-24","2019-07-01","2019-07-08","2019-07-15","2019-07-22","2019-07-29","2019-08-05","2019-08-12","2019-08-19","2019-08-26","2019-09-02","2019-09-09","2019-09-16","2019-09-23","2019-09-30","2019-10-07","2019-10-14","2019-10-21","2019-10-28","2019-11-04","2019-11-11","2019-11-18","2019-11-25","2019-12-02","2019-12-09","2019-12-16","2019-12-23","2019-12-30","2020-01-06","2020-01-13","2020-01-20","2020-01-27","2020-02-03","2020-02-10","2020-02-17","2020-02-24","2020-03-02","2020-03-09","2020-03-30","2020-04-06","2020-04-13","2020-05-04","2020-05-11","2020-06-29","2020-07-20","2020-08-03","2020-08-31","2020-09-07","2020-09-21","2020-10-05","2020-10-26","2020-11-16","2020-11-23","2020-11-30","2020-12-07","2020-12-14","2021-01-11","2021-01-18","2021-02-08","2021-02-15","2021-02-22","2021-03-01","2021-03-08","2021-03-15","2021-03-22","2021-03-29","2021-04-05","2021-04-12","2021-04-19","2021-04-26","2021-05-03","2021-05-10","2021-05-17","2021-05-24","2021-05-31","2021-06-07","2021-06-14","2021-06-21","2021-06-28","2021-07-05","2021-07-12","2021-07-19","2021-07-26","2021-08-02","2021-08-09","2021-08-16","2021-08-23","2021-08-30","2021-09-06","2021-09-13","2021-09-20","2021-09-27","2021-10-04","2021-10-11"],"weekStartDt":{"__ndarray__":"AADAgK8IdkIAAABJ8Ap2QgAAQBExDXZCAACA2XEPdkIAAMChshF2QgAAQDI0FnZCAACA+nQYdkIAAMDCtRp2QgAAQFM3H3ZCAACAG3ghdkIAAMDjuCN2QgAAAKz5JXZCAABAdDoodkIAAMAEvCx2QgAAAM38LnZCAABAlT0xdkIAAIBdfjN2QgAAwCW/NXZCAABAtkA6dkIAAMBGwj52QgAAAA8DQXZCAACAn4RFdkIAAAAwBkp2QgAAQPhGTHZCAACAwIdOdkIAAMCIyFB2QgAAAFEJU3ZCAACA4YpXdkIAAMCpy1l2QgAAAHIMXHZCAABAOk1edkIAAIACjmB2QgAAwMrOYnZCAABAW1BndkIAAIAjkWl2QgAAwOvRa3ZCAAAAtBJudkIAAEB8U3B2QgAAgESUcnZCAADADNV0dkIAAADVFXd2QgAAgGWXe3ZCAADALdh9dkIAAAD2GIB2QgAAgIaahHZCAADATtuGdkIAAEDfXIt2QgAAgKedjXZCAADAb96PdkIAAAA4H5J2QgAAQABglHZCAACAyKCWdkIAAMCQ4Zh2QgAAAFkim3ZCAABAIWOddkIAAIDpo592QgAAAHolpHZCAABAQmamdkIAAIAKp6h2QgAAwNLnqnZCAAAAmyitdkIAAIArqrF2QgAAALwrtnZCAABAhGy4dkIAAIBMrbp2QgAAwBTuvHZCAAAA3S6/dkIAAEClb8F2QgAAgG2ww3ZCAADANfHFdkIAAAD+Mch2QgAAQMZyynZCAACAjrPMdkIAAMBW9M52QgAAAB810XZCAABA53XTdkIAAICvttV2QgAAwHf313ZCAAAAQDjadkIAAEAIedx2QgAAgNC53nZCAADAmPrgdkIAAABhO+N2QgAAQCl85XZCAACA8bzndkIAAMC5/el2QgAAAII+7HZCAABASn/udkIAAIASwPB2QgAAwNoA83ZCAAAAo0H1dkIAAEBrgvd2QgAAgDPD+XZCAADA+wP8dkIAAADERP52QgAAQIyFAHdCAACAVMYCd0IAAMAcBwV3QgAAAOVHB3dCAABArYgJd0IAAIB1yQt3QgAAQM6LEndCAACAlswUd0IAAMBeDRd3QgAAgLfPHXdCAADAfxAgd0IAAID51S93QgAAQFKYNndCAADA4hk7d0IAAMADHUR3QgAAAMxdRndCAACAXN9Kd0IAAADtYE93QgAAwEUjVndCAACAnuVcd0IAAMBmJl93QgAAAC9nYXdCAABA96djd0IAAIC/6GV3QgAAgODrbndCAADAqCxxd0IAAIAB73d3QgAAwMkvendCAAAAknB8d0IAAEBasX53QgAAgCLygHdCAADA6jKDd0IAAACzc4V3QgAAQHu0h3dCAACAQ/WJd0IAAMALNox3QgAAANR2jndCAABAnLeQd0IAAIBk+JJ3QgAAwCw5lXdCAAAA9XmXd0IAAEC9upl3QgAAgIX7m3dCAADATTyed0IAAAAWfaB3QgAAQN69ondCAACApv6kd0IAAMBuP6d3QgAAADeAqXdCAABA/8Crd0IAAIDHAa53QgAAwI9CsHdCAAAAWIOyd0IAAEAgxLR3QgAAgOgEt3dCAADAsEW5d0IAAAB5hrt3QgAAQEHHvXdCAACACQjAd0IAAMDRSMJ3QgAAAJqJxHdCAABAYsrGd0I=","dtype":"float64","order":"little","shape":[157]}},"selected":{"id":"1042"},"selection_policy":{"id":"1041"}},"id":"1027","type":"ColumnDataSource"},{"attributes":{"num_minor_ticks":5,"tickers":[{"id":"1043"},{"id":"1044"},{"id":"1045"},{"id":"1046"},{"id":"1047"},{"id":"1048"},{"id":"1049"},{"id":"1050"},{"id":"1051"},{"id":"1052"},{"id":"1053"},{"id":"1054"}]},"id":"1015","type":"DatetimeTicker"},{"attributes":{"coordinates":null,"formatter":{"id":"1036"},"group":null,"major_label_policy":{"id":"1037"},"ticker":{"id":"1019"}},"id":"1018","type":"LinearAxis"},{"attributes":{"line_alpha":0.2,"line_color":"#1f77b4","line_width":2,"x":{"field":"weekStartDt"},"y":{"field":"totalHr"}},"id":"1031","type":"Line"},{"attributes":{"coordinates":null,"group":null,"text":"Hours Spent in Meetings by Week"},"id":"1004","type":"Title"}],"root_ids":["1003"]},"title":"Bokeh Application","version":"2.4.1"}}
+        </script>
+        <script type="text/javascript">
+          (function() {
+            const fn = function() {
+              Bokeh.safely(function() {
+                (function(root) {
+                  function embed_document(root) {
+                    
+                  const docs_json = document.getElementById('1307').textContent;
+                  const render_items = [{"docid":"45818194-6380-4174-9ec7-b97a602f70b0","root_ids":["1003"],"roots":{"1003":"44746abd-b72c-4b9a-a692-bca36c0beee3"}}];
+                  root.Bokeh.embed.embed_items(docs_json, render_items);
+                
+                  }
+                  if (root.Bokeh !== undefined) {
+                    embed_document(root);
+                  } else {
+                    let attempts = 0;
+                    const timer = setInterval(function(root) {
+                      if (root.Bokeh !== undefined) {
+                        clearInterval(timer);
+                        embed_document(root);
+                      } else {
+                        attempts++;
+                        if (attempts > 100) {
+                          clearInterval(timer);
+                          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                        }
+                      }
+                    }, 10, root)
+                  }
+                })(window);
+              });
+            };
+            if (document.readyState != "loading") fn();
+            else document.addEventListener("DOMContentLoaded", fn);
+          })();
+        </script>
+    
+  </body>
+  
+</html>

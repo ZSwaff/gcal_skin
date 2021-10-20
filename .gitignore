@@ -108,7 +108,7 @@ venv.bak/
 
 # Google Credentials
 token*
-credentials*
+scripts/credentials.json
 
 # Cache
 *CACHE*
